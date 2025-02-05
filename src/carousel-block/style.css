@@ -1,0 +1,82 @@
+/* CSS */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  .carousel-track {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .carousel-slide {
+    flex: 0 0 33.333%; /* 3 slides for desktop */
+    position: relative;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  
+  @media (max-width: 768px) {
+    .carousel-slide {
+      flex: 0 0 50%; /* 2 slides for tablet */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .carousel-slide {
+      flex: 0 0 100%; /* 1 slide for mobile */
+    }
+  }
+  
+  .carousel-slide img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .carousel-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px;
+  }
+  
+  .carousel-prev,
+  .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .carousel-prev { left: 0; }
+  .carousel-next { right: 0; }
+  
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .current-dot {
+    background: #333;
+  }

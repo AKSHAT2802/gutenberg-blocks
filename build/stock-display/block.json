@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/stock-display",
+  "version": "1.0.0",
+  "title": "Stock Tracker",
+  "category": "widgets",
+  "icon": "chart-line",
+  "description": "Display real-time stock data",
+  "supports": {
+    "html": false
+  },
+  "textdomain": "gb-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScriptModule": "file:./view.js",
+  "render": "file:./render.php"
+}

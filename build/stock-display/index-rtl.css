@@ -1,0 +1,118 @@
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/stock-display/editor.css ***!
+  \**********************************************************************************************************************************************************************************/
+.stock-tracker-block {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stock-tracker-tabs {
+    margin-bottom: 20px;
+}
+
+.stock-tab {
+    padding: 10px 20px;
+    margin-left: 5px;
+    border: none;
+    background: #f1f5f9;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #64748b;
+    transition: all 0.2s ease;
+}
+
+.stock-tab:hover {
+    background: #e2e8f0;
+}
+
+.stock-tab.active {
+    background: #0369a1;
+    color: white;
+}
+
+.stock-table-container {
+    overflow-x: auto;
+}
+
+.stock-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.stock-table th,
+.stock-table td {
+    padding: 12px;
+    text-align: right;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.stock-table th {
+    background: #f8fafc;
+    font-weight: 600;
+    color: #475569;
+}
+
+.stock-table td {
+    color: #334155;
+}
+
+.stock-name {
+    font-weight: 500;
+    color: #0369a1;
+}
+
+.stock-ltp {
+    font-family: monospace;
+}
+
+.positive {
+    color: #16a34a;
+}
+
+.negative {
+    color: #dc2626;
+}
+
+.stock-ratio {
+    font-family: monospace;
+    color: #6b7280;
+}
+
+/* Editor specific styles */
+.editor-styles-wrapper .stock-tracker-block {
+    margin: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .stock-tab {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    .stock-table th,
+    .stock-table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+/* Add these to your style.css */
+.stock-tracker-root {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stock-loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+

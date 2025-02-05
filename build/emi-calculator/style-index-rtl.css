@@ -1,0 +1,145 @@
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/@wordpress/scripts/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/emi-calculator/style.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
+/* Scoped CSS for the EMI Calculator */
+div[data-wp-interactive="create-block/emi-calculator"] {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 900px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  margin: 40px auto;
+}
+
+.primary-group {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 15px;
+}
+
+input[type=range] {
+  width: 100%;
+  margin: 10px 0 0 0 !important;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  background-color: white;
+}
+
+.form-group label {
+  font-size: 1.2rem;
+}
+.form-group label span {
+  font-weight: 700;
+}
+
+div[data-wp-interactive="create-block/emi-calculator"] .panel {
+  flex: 1;
+  padding: 20px;
+}
+
+div[data-wp-interactive="create-block/emi-calculator"] .panel:first-child {
+  background: #2828cc;
+  /* Blue background */
+  color: #fff;
+  flex: 1.2;
+}
+
+div[data-wp-interactive="create-block/emi-calculator"] .panel p {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+div[data-wp-interactive="create-block/emi-calculator"] .form-group {
+  margin-bottom: 15px;
+}
+
+div[data-wp-interactive="create-block/emi-calculator"] .form-group input[type=number] {
+  width: 100%;
+  padding: 15px 0px;
+  font-size: 1.3rem;
+  border: none;
+  border-bottom: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  outline: none;
+  transition: border-bottom 0.3s ease-in-out;
+}
+
+div[data-wp-interactive="create-block/emi-calculator"] .form-group input[type=number]:focus {
+  border-bottom: 2px solid #fff8e1;
+  /* Subtle yellow effect */
+}
+
+div[data-wp-interactive="create-block/emi-calculator"] .panel:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #eaeaff;
+}
+
+div[data-wp-interactive="create-block/emi-calculator"] .normal-group {
+  margin-bottom: 15px;
+  padding: 15px;
+  background: #2828cc;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+}
+
+div[data-wp-interactive="create-block/emi-calculator"] .ingredients {
+  display: inline-block;
+}
+
+.primary-group .ingredients span {
+  color: #000 !important;
+  /* Subtle highlight */
+  margin-right: 5px;
+}
+
+.normal-group .ingredients span {
+  font-size: 1.3rem;
+  color: #fff;
+  margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+  div[data-wp-interactive="create-block/emi-calculator"] {
+    flex-direction: column;
+  }
+  div[data-wp-interactive="create-block/emi-calculator"] .panel {
+    flex: 1;
+  }
+  div[data-wp-interactive="create-block/emi-calculator"] .panel p {
+    font-size: 1.4rem;
+  }
+  div[data-wp-interactive="create-block/emi-calculator"] .normal-group {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  div[data-wp-interactive="create-block/emi-calculator"] .panel p {
+    font-size: 1.2rem;
+  }
+  div[data-wp-interactive="create-block/emi-calculator"] .form-group input[type=number] {
+    font-size: 1rem;
+  }
+  div[data-wp-interactive="create-block/emi-calculator"] .normal-group {
+    padding: 10px;
+    font-size: 1rem;
+  }
+  .primary-group {
+    font-size: 1rem;
+  }
+  .normal-group .ingredients span {
+    font-size: 1rem;
+  }
+}
