@@ -61,7 +61,7 @@
 	right: 0;
 	left: 0;
 	background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-	color: white;
+	color: #fff;
 	padding: 20px;
 	transform: translateY(0);
 	transition: transform 0.3s ease;
@@ -92,23 +92,16 @@
 	height: 40px;
 	border-radius: 50%;
 	cursor: pointer;
-	z-index: 1;
+	z-index: 10;
+	margin: 0 20px;
 	transition: all 0.3s ease;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .carousel-prev:hover,
 .carousel-next:hover {
-	background: white;
+	background: #fff;
 	transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-prev {
-	right: 20px;
-}
-
-.carousel-next {
-	left: 20px;
 }
 
 .carousel-dots {
@@ -134,19 +127,5 @@
 .current-dot {
 	background: #333;
 	transform: scale(1.2);
-}
-
-/* Add to existing CSS */
-.carousel-prev,
-.carousel-next {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	background: rgba(255, 255, 255, 0.9);
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	z-index: 10;  /* Increased z-index */
-	margin: 0 20px; /* Added margin */
 }
 
