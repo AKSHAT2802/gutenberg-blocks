@@ -8,7 +8,7 @@ div[data-wp-interactive="create-block/emi-calculator"] {
   max-width: 900px;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   border: 1px solid #e0e0e0;
   margin: 40px auto;
@@ -51,7 +51,7 @@ div[data-wp-interactive="create-block/emi-calculator"] .panel:first-child {
 
 div[data-wp-interactive="create-block/emi-calculator"] .panel p {
   font-size: 1.6rem;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -62,7 +62,7 @@ div[data-wp-interactive="create-block/emi-calculator"] .form-group {
 
 div[data-wp-interactive="create-block/emi-calculator"] .form-group input[type=number] {
   width: 100%;
-  padding: 15px 0px;
+  padding: 15px 0;
   font-size: 1.3rem;
   border: none;
   border-bottom: 2px solid #fff;
@@ -90,7 +90,7 @@ div[data-wp-interactive="create-block/emi-calculator"] .normal-group {
   background: #2828cc;
   color: #fff;
   font-size: 1.1rem;
-  font-weight: bold;
+  font-weight: 700;
   border-radius: 5px;
   text-align: center;
 }
