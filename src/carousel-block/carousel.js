@@ -88,7 +88,6 @@ document.addEventListener( 'DOMContentLoaded', function () {
 			slidesPerView = newSlidesPerView;
 			// Recalculate dots
 			dotsContainer.innerHTML = '';
-			const totalDots = Math.ceil( slides.length / slidesPerView );
 			for ( let i = 0; i < totalDots; i++ ) {
 				const dot = document.createElement( 'span' );
 				dot.className = 'dot' + ( i === 0 ? ' current-dot' : '' );

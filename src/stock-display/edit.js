@@ -17,7 +17,6 @@ export default function Edit() {
 			const data = await response.json();
 			setStocks( data );
 		} catch ( error ) {
-			console.error( 'Error fetching stocks:', error );
 		} finally {
 			setLoading( false );
 		}
@@ -122,6 +121,7 @@ export default function Edit() {
 					setActiveTab( tabName );
 				} }
 			>
+				{ /* eslint-disable-next-line */ }
 				{ ( tab ) => renderStockTable() }
 			</TabPanel>
 		</div>

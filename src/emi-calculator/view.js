@@ -4,7 +4,7 @@
 import { store, getContext } from '@wordpress/interactivity';
 
 // Convert large amounts into metric if over a threshold
-function convertToMetricIfNeeded( value, threshold, unit ) {
+function convertToMetricIfNeeded( value, threshold ) {
 	if ( value > threshold ) {
 		return {
 			value: ( value / 100000 ).toFixed( 2 ),
@@ -86,10 +86,6 @@ store( 'create-block/emi-calculator', {
 			}
 			context.calculations.principalAmount =
 				parseFloat( event.target.value ) || 0;
-			console.log(
-				'Updated principalAmount:',
-				context.calculations.principalAmount
-			);
 			calculateEMI( context );
 		},
 		rateOfInterest: ( event ) => {
@@ -99,10 +95,6 @@ store( 'create-block/emi-calculator', {
 			}
 			context.calculations.rateOfInterest =
 				parseFloat( event.target.value ) || 0;
-			console.log(
-				'Updated rateOfInterest:',
-				context.calculations.rateOfInterest
-			);
 			calculateEMI( context );
 		},
 		DurationInYears: ( event ) => {
@@ -112,10 +104,6 @@ store( 'create-block/emi-calculator', {
 			}
 			context.calculations.DurationInYears =
 				parseFloat( event.target.value ) || 0;
-			console.log(
-				'Updated DurationInYears:',
-				context.calculations.DurationInYears
-			);
 			calculateEMI( context );
 		},
 	},

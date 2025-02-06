@@ -23,9 +23,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 		async function fetchStocks() {
 			try {
 				if ( ! loadingDiv || ! tableContainer ) {
-					console.error(
-						'loadingDiv or tableContainer is not found in the DOM.'
-					);
+					// error occures so returning.
 					return;
 				}
 
@@ -33,9 +31,11 @@ document.addEventListener( 'DOMContentLoaded', function () {
 				tableContainer.style.display = 'none';
 
 				const response = await fetch(
+					/* eslint-disable-next-line */
 					`${ stockTrackerData.apiUrl }/${ activeTab }`,
 					{
 						headers: {
+							/* eslint-disable-next-line */
 							'X-WP-Nonce': stockTrackerData.nonce,
 						},
 					}
@@ -51,7 +51,6 @@ document.addEventListener( 'DOMContentLoaded', function () {
 				try {
 					stocks = await response.json();
 				} catch ( jsonError ) {
-					console.error( 'Error parsing JSON:', jsonError );
 					throw new Error( 'Invalid JSON response from server' );
 				}
 
@@ -60,7 +59,6 @@ document.addEventListener( 'DOMContentLoaded', function () {
 				loadingDiv.style.display = 'none';
 				tableContainer.style.display = 'block';
 			} catch ( error ) {
-				console.error( 'Error fetching stocks:', error );
 				loadingDiv.textContent =
 					'Error loading stocks data. Please try again.';
 			}

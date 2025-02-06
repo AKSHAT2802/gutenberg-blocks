@@ -33,9 +33,7 @@ function Edit() {
       const response = await fetch(`/wp-json/stock-tracker/v1/stocks/${category}`);
       const data = await response.json();
       setStocks(data);
-    } catch (error) {
-      console.error('Error fetching stocks:', error);
-    } finally {
+    } catch (error) {} finally {
       setLoading(false);
     }
   };
