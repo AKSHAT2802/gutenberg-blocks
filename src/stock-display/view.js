@@ -18,33 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // async function fetchStocks() {
-        //     try {
-        //         loadingDiv.style.display = 'block';
-        //         tableContainer.style.display = 'none';
-
-        //         const response = await fetch(
-        //             `${stockTrackerData.apiUrl}/${activeTab}`,
-        //             {
-        //                 headers: {
-        //                     'X-WP-Nonce': stockTrackerData.nonce
-        //                 }
-        //             }
-        //         );
-
-        //         if (!response.ok) throw new Error('Network response was not ok');
-
-        //         const stocks = await response.json();
-        //         renderStocks(stocks);
-
-        //         loadingDiv.style.display = 'none';
-        //         tableContainer.style.display = 'block';
-        //     } catch (error) {
-        //         console.error('Error fetching stocks:', error);
-        //         loadingDiv.textContent = 'Error loading stocks data. Please try again.';
-        //     }
-        // }
-
         async function fetchStocks() {
             try {
                 if (!loadingDiv || !tableContainer) {
@@ -86,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
         function renderStocks(stocks) {
             const tbody = tableContainer.querySelector('tbody');
             tbody.innerHTML = stocks.map(stock => {
-                // Convert values to numbers before using toFixed
                 const ltp = parseFloat(stock.ltp);
                 const chg = parseFloat(stock.chg);
                 const chgPercent = parseFloat(stock.chg_percent);
