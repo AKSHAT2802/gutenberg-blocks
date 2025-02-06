@@ -24,8 +24,12 @@ document.addEventListener('DOMContentLoaded', function () {
     dotsContainer.appendChild(dot);
   }
   function getSlidesPerView() {
-    if (window.innerWidth <= 480) return 1;
-    if (window.innerWidth <= 768) return 2;
+    if (window.innerWidth <= 480) {
+      return 1;
+    }
+    if (window.innerWidth <= 768) {
+      return 2;
+    }
     return 3;
   }
   function updateCarousel() {

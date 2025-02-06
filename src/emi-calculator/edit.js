@@ -29,11 +29,6 @@ export default function Edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps();
 
 	return (
-		<p { ...blockProps }>
-			{ __(
-				'EMI Calculator',
-				'emi-calculator'
-			) }
-		</p>
+		<p { ...blockProps }>{ __( 'EMI Calculator', 'emi-calculator' ) }</p>
 	);
 }
