@@ -40,12 +40,10 @@ function Edit() {
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     // Fetch data when tab changes
     fetchStocks(activeTab);
-
     // Set up auto-refresh interval
     const interval = setInterval(() => {
       fetchStocks(activeTab);
     }, 60000); // Refresh every minute
-
     return () => clearInterval(interval);
   }, [activeTab]);
   const tabs = [{
