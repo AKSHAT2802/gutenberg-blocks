@@ -10,19 +10,20 @@
 /**
  * Render stock tracker block
  *
- * @param array    $attributes Block attributes.
- * @param string   $content    Block content.
- * @param WP_Block $block      Block instance.
+ * @param  array    $attributes Block attributes.
+ * @param  string   $content    Block content.
+ * @param  WP_Block $block      Block instance.
  * @return string  Block HTML.
  */
-function render_stock_tracker_block( $attributes, $content, $block ) {
+function render_stock_tracker_block( $attributes, $content, $block )
+{
     // Enqueue frontend assets
-    wp_enqueue_script( 'stock-tracker-view' );
-    wp_enqueue_style( 'stock-tracker-style' );
+    wp_enqueue_script('stock-tracker-view');
+    wp_enqueue_style('stock-tracker-style');
 
     ob_start();
     ?>
-    <div <?php echo get_block_wrapper_attributes( array( 'class' => 'wp-block-stock-tracker' ) ); ?>>
+    <div <?php echo get_block_wrapper_attributes(array( 'class' => 'wp-block-stock-tracker' )); ?>>
         <div class="stock-tracker-root">
             <div class="stock-tabs">
                 <button class="stock-tab active" data-tab="indices">Top Performing Indices</button>

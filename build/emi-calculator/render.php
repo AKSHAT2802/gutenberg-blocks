@@ -1,24 +1,31 @@
 <?php
 /**
  * PHP file to use when rendering the block type on the server to show on the front end.
+ *
+ * @package create-block
  */
+
+$context = array(
+    'calculations' => array(
+        'principalAmount' => 100000,
+        'rateOfInterest' => 5,
+        'DurationInYears' => 0
+    ),
+    'ingredients' => array(
+        'emiPerMonth' => 0,
+        'totalInterest' => 0,
+        'totalAmountPayable' => 0
+    ),
+    'unitemiPerMonthLk' => 'k',
+    'unittotalInterestLk' => 'k',
+    'unittotalAmountPayableLk' => 'k'
+);
 ?>
 
-<div <?php echo get_block_wrapper_attributes(); ?> data-wp-interactive="create-block/emi-calculator" data-wp-context='{
-        "calculations": {
-            "principalAmount": 100000,
-            "rateOfInterest": 5,
-            "DurationInYears": 0 
-        },
-        "ingredients": {
-            "emiPerMonth": 0,
-            "totalInterest": 0,
-            "totalAmountPayable": 0
-        },
-        "unitemiPerMonthLk": "k",
-        "unittotalInterestLk": "k",
-        "unittotalAmountPayableLk": "k"
-    }'>
+<div <?php echo get_block_wrapper_attributes(array(
+    'data-wp-interactive' => 'create-block/emi-calculator',
+    'data-wp-context' => wp_json_encode($context)
+)); ?>>
     <div class="panel">
         <p>Home Loan EMI Calculator</p>
         <div class="form-group">
