@@ -21,11 +21,10 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
-export default function Edit()
-{
-    const blockProps = useBlockProps();
+export default function Edit() {
+	const blockProps = useBlockProps();
 
-    return (
-    <p { ...blockProps }>{ __('EMI Calculator', 'emi-calculator') }</p>
-    );
+	return (
+		<p { ...blockProps }>{ __( 'EMI Calculator', 'emi-calculator' ) }</p>
+	);
 }

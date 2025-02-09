@@ -5,17 +5,17 @@
 ?>
 
 <div <?php echo get_block_wrapper_attributes(); ?> data-wp-interactive="create-block/emi-calculator" data-wp-context='{
-        "calculations": {
-            "principalAmount": 100000,
-            "rateOfInterest": 5,
-            "DurationInYears": 0 
-        },
-        "ingredients": {
-            "emiPerMonth": 0,
-            "totalInterest": 0,
-            "totalAmountPayable": 0
-        },
-    }'>
+    "calculations": {
+        "principalAmount": 100000,
+        "rateOfInterest": 5,
+        "DurationInYears": 0
+    },
+    "ingredients": {
+        "emiPerMonth": 0,
+        "totalInterest": 0,
+        "totalAmountPayable": 0
+    }
+}'>
     <div class="panel">
         <p>Home Loan EMI Calculator</p>
         <div class="form-group">
@@ -33,9 +33,9 @@
         </div>
 
         <div class="form-group">
-            <label for="durationInYears">Duration in Years: <span id="durationInYearsValue">0</span></label>
+            <label for="durationInYears">Duration in Years: <span id="durationInYearsValue">1</span></label>
             <br>
-            <input type="range" id="durationInYears" min="0" max="30" step="1" value="0"
+            <input type="range" id="durationInYears" min="1" max="30" step="1" value="1"
                 data-wp-on--input="actions.DurationInYears">
         </div>
     </div>
