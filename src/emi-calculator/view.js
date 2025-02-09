@@ -3,28 +3,13 @@
  */
 import { store, getContext } from '@wordpress/interactivity';
 
-// Convert large amounts into metric if over a threshold
-function convertToMetricIfNeeded( value, threshold )
-{
-    if (value > threshold ) {
-        return {
-            value: ( value / 100000 ).toFixed(2),
-            unit: 'Lk',
-        };
-    }
-    return {
-        value: value.toFixed(2),
-        unit: '',
-    };
-}
-
 // Calculate the EMI and related values
 function calculateEMI( context )
 {
     if (! context.calculations ) {
         context.calculations = {
-            principalAmount: 0,
-            rateOfInterest: 0,
+            principalAmount: 100000,
+            rateOfInterest: 5,
             DurationInYears: 0,
         };
     }
@@ -53,24 +38,14 @@ function calculateEMI( context )
         const totalAmountPayable = emiPerMonth * totalMonths;
         const totalInterest = totalAmountPayable - principalAmount;
 
-        // Convert and assign EMI
-        const emi = convertToMetricIfNeeded(emiPerMonth, 100000, 'Lk');
-        context.unitemiPerMonthLk = emi.unit;
-        ingredients.emiPerMonth = emi.value;
+		// round off the EMI to 2 decimal places
+        ingredients.emiPerMonth = Math.round(emiPerMonth * 100) / 100;
 
-        // Convert and assign total interest
-        const interest = convertToMetricIfNeeded(totalInterest, 100000, 'Lk');
-        context.unittotalInterestLk = interest.unit;
-        ingredients.totalInterest = interest.value;
+		// round off the total interest to 2 decimal places
+        ingredients.totalInterest = Math.round(totalInterest * 100) / 100;
 
-        // Convert and assign total amount payable
-        const total = convertToMetricIfNeeded(
-            totalAmountPayable,
-            100000,
-            'Lk'
-        );
-        context.unittotalAmountPayableLk = total.unit;
-        ingredients.totalAmountPayable = total.value;
+        // round off the total amount payable to 2 decimal places
+        ingredients.totalAmountPayable = Math.round(totalAmountPayable * 100) / 100;
     } else {
         ingredients.emiPerMonth = 0;
         ingredients.totalInterest = 0;

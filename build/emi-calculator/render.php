@@ -1,31 +1,21 @@
 <?php
 /**
  * PHP file to use when rendering the block type on the server to show on the front end.
- *
- * @package create-block
  */
-
-$context = array(
-    'calculations' => array(
-        'principalAmount' => 100000,
-        'rateOfInterest' => 5,
-        'DurationInYears' => 0
-    ),
-    'ingredients' => array(
-        'emiPerMonth' => 0,
-        'totalInterest' => 0,
-        'totalAmountPayable' => 0
-    ),
-    'unitemiPerMonthLk' => 'k',
-    'unittotalInterestLk' => 'k',
-    'unittotalAmountPayableLk' => 'k'
-);
 ?>
 
-<div <?php echo get_block_wrapper_attributes(array(
-    'data-wp-interactive' => 'create-block/emi-calculator',
-    'data-wp-context' => wp_json_encode($context)
-)); ?>>
+<div <?php echo get_block_wrapper_attributes(); ?> data-wp-interactive="create-block/emi-calculator" data-wp-context='{
+        "calculations": {
+            "principalAmount": 100000,
+            "rateOfInterest": 5,
+            "DurationInYears": 0 
+        },
+        "ingredients": {
+            "emiPerMonth": 0,
+            "totalInterest": 0,
+            "totalAmountPayable": 0
+        },
+    }'>
     <div class="panel">
         <p>Home Loan EMI Calculator</p>
         <div class="form-group">
@@ -54,21 +44,18 @@ $context = array(
         <div class="normal-group">
             <div class="ingredients">Monthly EMI :
                 <span data-wp-text="context.ingredients.emiPerMonth"></span>
-                <span data-wp-text="context.unitemiPerMonthLk"></span>
             </div>
         </div>
 
         <div class="normal-group">
             <div class="ingredients">Interest Amount :
                 <span data-wp-text="context.ingredients.totalInterest"></span>
-                <span data-wp-text="context.unittotalInterestLk"></span>
             </div>
         </div>
 
         <div class="primary-group">
             <div class="ingredients">Total Amount Payable :
                 <span data-wp-text="context.ingredients.totalAmountPayable"></span>
-                <span data-wp-text="context.unittotalAmountPayableLk"></span>
             </div>
         </div>
     </div>

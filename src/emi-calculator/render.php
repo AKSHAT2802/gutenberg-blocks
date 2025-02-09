@@ -15,9 +15,6 @@
             "totalInterest": 0,
             "totalAmountPayable": 0
         },
-        "unitemiPerMonthLk": "k",
-        "unittotalInterestLk": "k",
-        "unittotalAmountPayableLk": "k"
     }'>
     <div class="panel">
         <p>Home Loan EMI Calculator</p>
@@ -47,21 +44,18 @@
         <div class="normal-group">
             <div class="ingredients">Monthly EMI :
                 <span data-wp-text="context.ingredients.emiPerMonth"></span>
-                <span data-wp-text="context.unitemiPerMonthLk"></span>
             </div>
         </div>
 
         <div class="normal-group">
             <div class="ingredients">Interest Amount :
                 <span data-wp-text="context.ingredients.totalInterest"></span>
-                <span data-wp-text="context.unittotalInterestLk"></span>
             </div>
         </div>
 
         <div class="primary-group">
             <div class="ingredients">Total Amount Payable :
                 <span data-wp-text="context.ingredients.totalAmountPayable"></span>
-                <span data-wp-text="context.unittotalAmountPayableLk"></span>
             </div>
         </div>
     </div>

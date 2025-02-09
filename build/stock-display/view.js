@@ -20,44 +20,18 @@ document.addEventListener('DOMContentLoaded', function () {
         fetchStocks();
       });
     });
-
-    // async function fetchStocks() {
-    //     try {
-    //         loadingDiv.style.display = 'block';
-    //         tableContainer.style.display = 'none';
-
-    //         const response = await fetch(
-    //             `${stockTrackerData.apiUrl}/${activeTab}`,
-    //             {
-    //                 headers: {
-    //                     'X-WP-Nonce': stockTrackerData.nonce
-    //                 }
-    //             }
-    //         );
-
-    //         if (!response.ok) throw new Error('Network response was not ok');
-
-    //         const stocks = await response.json();
-    //         renderStocks(stocks);
-
-    //         loadingDiv.style.display = 'none';
-    //         tableContainer.style.display = 'block';
-    //     } catch (error) {
-    //         console.error('Error fetching stocks:', error);
-    //         loadingDiv.textContent = 'Error loading stocks data. Please try again.';
-    //     }
-    // }
-
     async function fetchStocks() {
       try {
         if (!loadingDiv || !tableContainer) {
-          console.error("loadingDiv or tableContainer is not found in the DOM.");
+          // error occures so returning.
           return;
         }
         loadingDiv.style.display = 'block';
         tableContainer.style.display = 'none';
-        const response = await fetch(`${stockTrackerData.apiUrl}/${activeTab}`, {
+        const response = await fetch(/* eslint-disable-next-line */
+        `${stockTrackerData.apiUrl}/${activeTab}`, {
           headers: {
+            /* eslint-disable-next-line */
             'X-WP-Nonce': stockTrackerData.nonce
           }
         });
@@ -68,38 +42,35 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
           stocks = await response.json();
         } catch (jsonError) {
-          console.error("Error parsing JSON:", jsonError);
-          throw new Error("Invalid JSON response from server");
+          throw new Error('Invalid JSON response from server');
         }
         renderStocks(stocks);
         loadingDiv.style.display = 'none';
         tableContainer.style.display = 'block';
       } catch (error) {
-        console.error("Error fetching stocks:", error);
-        loadingDiv.textContent = "Error loading stocks data. Please try again.";
+        loadingDiv.textContent = 'Error loading stocks data. Please try again.';
       }
     }
     function renderStocks(stocks) {
       const tbody = tableContainer.querySelector('tbody');
       tbody.innerHTML = stocks.map(stock => {
-        // Convert values to numbers before using toFixed
         const ltp = parseFloat(stock.ltp);
         const chg = parseFloat(stock.chg);
         const chgPercent = parseFloat(stock.chg_percent);
         const adRatio = parseFloat(stock.ad_ratio);
         return `
-                    <tr>
-                        <td class="stock-name">${stock.name}</td>
-                        <td class="stock-ltp">${!isNaN(ltp) ? ltp.toFixed(2) : 'N/A'}</td>
-                        <td class="stock-chg ${chg >= 0 ? 'positive' : 'negative'}">
-                            ${chg >= 0 ? '+' : ''}${!isNaN(chg) ? chg.toFixed(2) : 'N/A'}
-                        </td>
-                        <td class="stock-percent ${chgPercent >= 0 ? 'positive' : 'negative'}">
-                            ${chgPercent >= 0 ? '+' : ''}${!isNaN(chgPercent) ? chgPercent.toFixed(2) : 'N/A'}%
-                        </td>
-                        <td class="stock-ratio">${!isNaN(adRatio) ? adRatio.toFixed(2) : 'N/A'}</td>
-                    </tr>
-                `;
+                             <tr>
+                            <td class="stock-name">${stock.name}</td>
+                            <td class="stock-ltp">${!isNaN(ltp) ? ltp.toFixed(2) : 'N/A'}</td>
+                            <td class="stock-chg ${chg >= 0 ? 'positive' : 'negative'}">
+                                ${chg >= 0 ? '+' : ''}${!isNaN(chg) ? chg.toFixed(2) : 'N/A'}
+                            </td>
+                            <td class="stock-percent ${chgPercent >= 0 ? 'positive' : 'negative'}">
+                                ${chgPercent >= 0 ? '+' : ''}${!isNaN(chgPercent) ? chgPercent.toFixed(2) : 'N/A'}%
+                            </td>
+                            <td class="stock-ratio">${!isNaN(adRatio) ? adRatio.toFixed(2) : 'N/A'}</td>
+                            </tr>
+                             `;
       }).join('');
     }
 
