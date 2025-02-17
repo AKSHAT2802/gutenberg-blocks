@@ -13,12 +13,12 @@
  * @package create-block
  */
 
-if (! defined('ABSPATH') ) {
-    exit; // Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
 }
 
-require_once plugin_dir_path(__FILE__) . 'stock-api.php';
-require_once plugin_dir_path(__FILE__) . './src/stock-display/render.php';
+require_once plugin_dir_path( __FILE__ ) . 'stock-api.php';
+require_once plugin_dir_path( __FILE__ ) . './src/stock-display/render.php';
 
 
 /**
@@ -26,48 +26,48 @@ require_once plugin_dir_path(__FILE__) . './src/stock-display/render.php';
  * Behind the scenes, it registers also all assets so they can be enqueued
  * through the block editor in the corresponding context.
  */
-function emi_calculator_block_init()
-{
-    register_block_type_from_metadata(__DIR__ . '/build/emi-calculator');
+function emi_calculator_block_init() {
+	register_block_type_from_metadata( __DIR__ . '/build/emi-calculator' );
 }
-add_action('init', 'emi_calculator_block_init');
+add_action( 'init', 'emi_calculator_block_init' );
 
 /**
  * Registers the Carousel block.
  */
-function carousel_block_init()
-{
-    register_block_type_from_metadata(__DIR__ . '/build/carousel-block');
+function carousel_block_init() {
+	register_block_type_from_metadata( __DIR__ . '/build/carousel-block' );
 }
-add_action('init', 'carousel_block_init');
+add_action( 'init', 'carousel_block_init' );
 
 /**
  * Registers the Stock Tracker block.
  */
-function stock_tracker_block_init()
-{
-    // Register block
-    register_block_type_from_metadata(
-        __DIR__ . '/build/stock-display', array(
-        'render_callback' => 'render_stock_tracker_block'
-        ) 
-    );
+function stock_tracker_block_init() {
+	// Register block.
+	register_block_type_from_metadata(
+		__DIR__ . '/build/stock-display',
+		array(
+			'render_callback' => 'render_stock_tracker_block',
+		)
+	);
 
-    // Register scripts and styles
-    wp_register_script(
-        'stock-tracker-view',
-        plugins_url('build/stock-display/view.js', __FILE__),
-        array(),
-        filemtime(plugin_dir_path(__FILE__) . 'build/stock-display/view.js')
-    );
+	// Register scripts and styles.
+	wp_register_script(
+		'stock-tracker-view',
+		plugins_url( 'build/stock-display/view.js', __FILE__ ),
+		array(),
+		filemtime( plugin_dir_path( __FILE__ ) . 'build/stock-display/view.js' )
+	);
 
-    // Localize script with necessary data
-    wp_localize_script(
-        'stock-tracker-view', 'stockTrackerData', array(
-        'apiUrl' => rest_url('stock-tracker/v1/stocks'),
-        'nonce'  => wp_create_nonce('wp_rest')
-        ) 
-    );
+	// Localize script with necessary data.
+	wp_localize_script(
+		'stock-tracker-view',
+		'stockTrackerData',
+		array(
+			'apiUrl' => rest_url( 'stock-tracker/v1/stocks' ),
+			'nonce'  => wp_create_nonce( 'wp_rest' ),
+		)
+	);
 }
-add_action('init', 'stock_tracker_block_init');
+add_action( 'init', 'stock_tracker_block_init' );
 
