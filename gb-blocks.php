@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-require_once plugin_dir_path( __FILE__ ) . 'stock-api.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-stock-tracker-api.php';
 require_once plugin_dir_path( __FILE__ ) . './src/stock-display/render.php';
 
 
