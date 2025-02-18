@@ -45,10 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
 			const tbody = tableContainer.querySelector( 'tbody' );
 			tbody.innerHTML = stocks
 				.map( ( stock ) => {
-					const ltp = parseFloat( stock.ltp );
-					const chg = parseFloat( stock.chg );
-					const chgPercent = parseFloat( stock.chg_percent );
-					const adRatio = parseFloat( stock.ad_ratio );
+					// Generare a random number between -10 to +10
+					const randomChange = Math.random() * 2 - 1;
+					const ltp = stock.ltp + randomChange * stock.ltp * 0.1;
+					const chg = stock.chg + randomChange * stock.chg * 0.1;
+					const chgPercent = stock.chg_percent + randomChange * stock.chg_percent * 0.1;
+					const adRatio = stock.ad_ratio + randomChange * stock.ad_ratio * 0.1;
 					return `
                              <tr>
                             <td class="stock-name">${ stock.name }</td>
