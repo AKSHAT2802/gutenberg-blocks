@@ -1,0 +1,60 @@
+{
+    "indices": [
+      {
+        "id": 1,
+        "name": "Nifty 50",
+        "ltp": 11112.15,
+        "chg": -26.25,
+        "chg_percent": -0.11,
+        "ad_ratio": 0.67
+      },
+      {
+        "id": 2,
+        "name": "Nifty Bank",
+        "ltp": 49506.95,
+        "chg": -80.25,
+        "chg_percent": -0.16,
+        "ad_ratio": 0.71
+      }
+    ],
+    "gainers": [
+      {
+        "id": 3,
+        "name": "Reliance",
+        "ltp": 2456.75,
+        "chg": 45.25,
+        "chg_percent": 1.87,
+        "ad_ratio": 1.23
+      }
+    ],
+    "losers": [
+      {
+        "id": 4,
+        "name": "TCS",
+        "ltp": 3456.75,
+        "chg": -45.25,
+        "chg_percent": -1.87,
+        "ad_ratio": 0.83
+      }
+    ],
+    "high": [
+      {
+        "id": 5,
+        "name": "HDFC Bank",
+        "ltp": 1676.75,
+        "chg": 25.25,
+        "chg_percent": 0.87,
+        "ad_ratio": 1.13
+      }
+    ],
+    "low": [
+      {
+        "id": 6,
+        "name": "Infosys",
+        "ltp": 1356.75,
+        "chg": -15.25,
+        "chg_percent": -0.87,
+        "ad_ratio": 0.93
+      }
+    ]
+  }

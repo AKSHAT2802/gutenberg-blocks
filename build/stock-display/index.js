@@ -18,8 +18,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _data_stocks_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./data/stocks.json */ "./src/stock-display/data/stocks.json");
 
-// edit.js
+
 
 
 function Edit() {
@@ -29,23 +30,19 @@ function Edit() {
   const fetchStocks = async category => {
     setLoading(true);
     try {
-      // Use category-specific endpoint
-      const response = await fetch(`/wp-json/stock-tracker/v1/stocks/${category}`);
-      const data = await response.json();
-      setStocks(data);
-    } catch (error) {} finally {
+      // Using imported JSON data directly
+      setStocks(_data_stocks_json__WEBPACK_IMPORTED_MODULE_3__[category] || []);
+    } catch (error) {
+      console.error('Error loading stocks:', error);
+    } finally {
       setLoading(false);
     }
   };
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-    // Fetch data when tab changes
     fetchStocks(activeTab);
-    // Set up auto-refresh interval
-    const interval = setInterval(() => {
-      fetchStocks(activeTab);
-    }, 60000); // Refresh every minute
-    return () => clearInterval(interval);
   }, [activeTab]);
+
+  // Your existing tabs array
   const tabs = [{
     name: 'indices',
     title: 'Top Performing Indices',
@@ -183,6 +180,16 @@ module.exports = window["wp"]["components"];
 /***/ ((module) => {
 
 module.exports = window["wp"]["element"];
+
+/***/ }),
+
+/***/ "./src/stock-display/data/stocks.json":
+/*!********************************************!*\
+  !*** ./src/stock-display/data/stocks.json ***!
+  \********************************************/
+/***/ ((module) => {
+
+module.exports = /*#__PURE__*/JSON.parse('{"indices":[{"id":1,"name":"Nifty 50","ltp":11112.15,"chg":-26.25,"chg_percent":-0.11,"ad_ratio":0.67},{"id":2,"name":"Nifty Bank","ltp":49506.95,"chg":-80.25,"chg_percent":-0.16,"ad_ratio":0.71}],"gainers":[{"id":3,"name":"Reliance","ltp":2456.75,"chg":45.25,"chg_percent":1.87,"ad_ratio":1.23}],"losers":[{"id":4,"name":"TCS","ltp":3456.75,"chg":-45.25,"chg_percent":-1.87,"ad_ratio":0.83}],"high":[{"id":5,"name":"HDFC Bank","ltp":1676.75,"chg":25.25,"chg_percent":0.87,"ad_ratio":1.13}],"low":[{"id":6,"name":"Infosys","ltp":1356.75,"chg":-15.25,"chg_percent":-0.87,"ad_ratio":0.93}]}');
 
 /***/ })
 

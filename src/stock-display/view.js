@@ -1,68 +1,45 @@
-document.addEventListener( 'DOMContentLoaded', function () {
-	const stockTrackers = document.querySelectorAll( '.stock-tracker-root' );
+document.addEventListener('DOMContentLoaded', function() {
+    const stockTrackers = document.querySelectorAll('.stock-tracker-root');
 
-	stockTrackers.forEach( function ( tracker ) {
-		let activeTab = 'indices';
-		const tableContainer = tracker.querySelector(
-			'.stock-table-container'
-		);
-		const loadingDiv = tracker.querySelector( '.stock-loading' );
+    stockTrackers.forEach(function(tracker) {
+        let activeTab = 'indices';
+        const tableContainer = tracker.querySelector('.stock-table-container');
+        const loadingDiv = tracker.querySelector('.stock-loading');
 
-		// Initialize tabs
-		const tabs = tracker.querySelectorAll( '.stock-tab' );
-		tabs.forEach( ( tab ) => {
-			tab.addEventListener( 'click', () => {
-				// Update active tab
-				tabs.forEach( ( t ) => t.classList.remove( 'active' ) );
-				tab.classList.add( 'active' );
-				activeTab = tab.dataset.tab;
-				fetchStocks();
-			} );
-		} );
+        // Initialize tabs
+        const tabs = tracker.querySelectorAll('.stock-tab');
+        tabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+                tabs.forEach((t) => t.classList.remove('active'));
+                tab.classList.add('active');
+                activeTab = tab.dataset.tab;
+                fetchStocks();
+            });
+        });
 
-		async function fetchStocks() {
-			try {
-				if ( ! loadingDiv || ! tableContainer ) {
-					// error occures so returning.
-					return;
-				}
+        async function fetchStocks() {
+            try {
+                if (!loadingDiv || !tableContainer) return;
 
-				loadingDiv.style.display = 'block';
-				tableContainer.style.display = 'none';
+                loadingDiv.style.display = 'block';
+                tableContainer.style.display = 'none';
 
-				const response = await fetch(
-					/* eslint-disable-next-line */
-                            `${ stockTrackerData.apiUrl }/${ activeTab }`,
-					{
-						headers: {
-							/* eslint-disable-next-line */
-                                    'X-WP-Nonce': stockTrackerData.nonce,
-						},
-					}
-				);
+                // Fetch JSON from src directory
+                const response = await fetch(stockTrackerData.jsonUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
 
-				if ( ! response.ok ) {
-					throw new Error(
-						`HTTP error! Status: ${ response.status }`
-					);
-				}
+                const data = await response.json();
+                renderStocks(data[activeTab] || []);
 
-				let stocks;
-				try {
-					stocks = await response.json();
-				} catch ( jsonError ) {
-					throw new Error( 'Invalid JSON response from server' );
-				}
-
-				renderStocks( stocks );
-
-				loadingDiv.style.display = 'none';
-				tableContainer.style.display = 'block';
-			} catch ( error ) {
-				loadingDiv.textContent =
-					'Error loading stocks data. Please try again.';
-			}
-		}
+                loadingDiv.style.display = 'none';
+                tableContainer.style.display = 'block';
+            } catch (error) {
+                console.error('Error loading stocks:', error);
+                loadingDiv.textContent = 'Error loading stocks data. Please try again.';
+            }
+        }
 
 		function renderStocks( stocks ) {
 			const tbody = tableContainer.querySelector( 'tbody' );
@@ -109,6 +86,6 @@ document.addEventListener( 'DOMContentLoaded', function () {
 		fetchStocks();
 
 		// Refresh every minute
-		setInterval( fetchStocks, 60000 );
+		setInterval( fetchStocks, 5000 );
 	} );
 } );

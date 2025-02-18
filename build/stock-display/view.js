@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const tabs = tracker.querySelectorAll('.stock-tab');
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        // Update active tab
         tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
         activeTab = tab.dataset.tab;
@@ -22,32 +21,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     async function fetchStocks() {
       try {
-        if (!loadingDiv || !tableContainer) {
-          // error occures so returning.
-          return;
-        }
+        if (!loadingDiv || !tableContainer) return;
         loadingDiv.style.display = 'block';
         tableContainer.style.display = 'none';
-        const response = await fetch(/* eslint-disable-next-line */
-        `${stockTrackerData.apiUrl}/${activeTab}`, {
-          headers: {
-            /* eslint-disable-next-line */
-            'X-WP-Nonce': stockTrackerData.nonce
-          }
-        });
+
+        // Fetch JSON from src directory
+        const response = await fetch(stockTrackerData.jsonUrl);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        let stocks;
-        try {
-          stocks = await response.json();
-        } catch (jsonError) {
-          throw new Error('Invalid JSON response from server');
-        }
-        renderStocks(stocks);
+        const data = await response.json();
+        renderStocks(data[activeTab] || []);
         loadingDiv.style.display = 'none';
         tableContainer.style.display = 'block';
       } catch (error) {
+        console.error('Error loading stocks:', error);
         loadingDiv.textContent = 'Error loading stocks data. Please try again.';
       }
     }
@@ -78,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchStocks();
 
     // Refresh every minute
-    setInterval(fetchStocks, 60000);
+    setInterval(fetchStocks, 5000);
   });
 });
 

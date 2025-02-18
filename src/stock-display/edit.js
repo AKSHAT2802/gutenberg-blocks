@@ -1,64 +1,36 @@
-// edit.js
 import { useEffect, useState } from '@wordpress/element';
 import { TabPanel } from '@wordpress/components';
+import stockData from './data/stocks.json';
 
 export default function Edit() {
-	const [ stocks, setStocks ] = useState( [] );
-	const [ loading, setLoading ] = useState( true );
-	const [ activeTab, setActiveTab ] = useState( 'indices' );
+    const [stocks, setStocks] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [activeTab, setActiveTab] = useState('indices');
 
-	const fetchStocks = async ( category ) => {
-		setLoading( true );
-		try {
-			// Use category-specific endpoint
-			const response = await fetch(
-				`/wp-json/stock-tracker/v1/stocks/${ category }`
-			);
-			const data = await response.json();
-			setStocks( data );
-		} catch ( error ) {
-		} finally {
-			setLoading( false );
-		}
-	};
+    const fetchStocks = async (category) => {
+        setLoading(true);
+        try {
+            // Using imported JSON data directly
+            setStocks(stockData[category] || []);
+        } catch (error) {
+            console.error('Error loading stocks:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-	useEffect( () => {
-		// Fetch data when tab changes
-		fetchStocks( activeTab );
-		// Set up auto-refresh interval
-		const interval = setInterval( () => {
-			fetchStocks( activeTab );
-		}, 60000 ); // Refresh every minute
-		return () => clearInterval( interval );
-	}, [ activeTab ] );
+    useEffect(() => {
+        fetchStocks(activeTab);
+    }, [activeTab]);
 
-	const tabs = [
-		{
-			name: 'indices',
-			title: 'Top Performing Indices',
-			className: 'tab-indices',
-		},
-		{
-			name: 'gainers',
-			title: 'Top Gainers',
-			className: 'tab-gainers',
-		},
-		{
-			name: 'losers',
-			title: 'Top Loser',
-			className: 'tab-losers',
-		},
-		{
-			name: 'high',
-			title: '52 Week High',
-			className: 'tab-high',
-		},
-		{
-			name: 'low',
-			title: '52 Week Low',
-			className: 'tab-low',
-		},
-	];
+    // Your existing tabs array
+    const tabs = [
+        { name: 'indices', title: 'Top Performing Indices', className: 'tab-indices' },
+        { name: 'gainers', title: 'Top Gainers', className: 'tab-gainers' },
+        { name: 'losers', title: 'Top Loser', className: 'tab-losers' },
+        { name: 'high', title: '52 Week High', className: 'tab-high' },
+        { name: 'low', title: '52 Week Low', className: 'tab-low' }
+    ];
 
 	const renderStockTable = () => (
 		<div className="stock-table-container">
