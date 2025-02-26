@@ -1,12 +1,10 @@
 <?php
 /**
- * render_stock_tracker_block
+ * Render callback for stock tracker block
  *
- * @param  mixed $attributes
- * @param  mixed $content
- * @param  mixed $block
- * @return void
+ * @package gb-blocks
  */
+
 /**
  * Render stock tracker block
  *
@@ -15,32 +13,30 @@
  * @param  WP_Block $block      Block instance.
  * @return string  Block HTML.
  */
-function render_stock_tracker_block( $attributes, $content, $block ) {
-	wp_enqueue_script( 'stock-tracker-view' );
-	wp_enqueue_style( 'stock-tracker-style' );
-
+function gb_blocks_render_stock_tracker( $attributes, $content, $block ) {
+	wp_enqueue_script( 'gb-blocks-stock-tracker-view' );
 	ob_start();
 	?>
-	<div <?php echo esc_attr( get_block_wrapper_attributes( array( 'class' => 'wp-block-stock-tracker' ) ) ); ?>>
+	<div <?php echo get_block_wrapper_attributes( array( 'class' => 'wp-block-stock-tracker' ) ); ?>>
 		<div class="stock-tracker-root">
 			<div class="stock-tabs">
-				<button class="stock-tab active" data-tab="indices">Top Performing Indices</button>
-				<button class="stock-tab" data-tab="gainers">Top Gainers</button>
-				<button class="stock-tab" data-tab="losers">Top Loser</button>
-				<button class="stock-tab" data-tab="high">52 Week High</button>
-				<button class="stock-tab" data-tab="low">52 Week Low</button>
+				<button class="stock-tab active" data-tab="indices"><?php esc_html_e( 'Top Performing Indices', 'gb-blocks' ); ?></button>
+				<button class="stock-tab" data-tab="gainers"><?php esc_html_e( 'Top Gainers', 'gb-blocks' ); ?></button>
+				<button class="stock-tab" data-tab="losers"><?php esc_html_e( 'Top Losers', 'gb-blocks' ); ?></button>
+				<button class="stock-tab" data-tab="high"><?php esc_html_e( '52 Week High', 'gb-blocks' ); ?></button>
+				<button class="stock-tab" data-tab="low"><?php esc_html_e( '52 Week Low', 'gb-blocks' ); ?></button>
 			</div>
 			<div class="stock-content">
-				<div class="stock-loading">Loading stocks data...</div>
+				<div class="stock-loading"><?php esc_html_e( 'Loading stocks data...', 'gb-blocks' ); ?></div>
 				<div class="stock-table-container" style="display: none;">
 					<table class="stock-table">
 						<thead>
 							<tr>
-								<th>Name</th>
-								<th>LTP</th>
-								<th>Chg</th>
-								<th>%Chg</th>
-								<th>AdRatio</th>
+								<th><?php esc_html_e( 'Name', 'gb-blocks' ); ?></th>
+								<th><?php esc_html_e( 'LTP', 'gb-blocks' ); ?></th>
+								<th><?php esc_html_e( 'Chg', 'gb-blocks' ); ?></th>
+								<th><?php esc_html_e( '%Chg', 'gb-blocks' ); ?></th>
+								<th><?php esc_html_e( 'AdRatio', 'gb-blocks' ); ?></th>
 							</tr>
 						</thead>
 						<tbody></tbody>

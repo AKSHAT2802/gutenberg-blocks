@@ -1,12 +1,12 @@
 <?php
 /**
- * PHP file to use when rendering the block type on the server to show on the front end.
+ * PHP file to use when rendering the EMI calculator block on the server to show on the front end.
  *
- * @package create-block
+ * @package gb-blocks
  */
 
 ?>
-<div <?php echo esc_attr( get_block_wrapper_attributes() ); ?> data-wp-interactive="create-block/emi-calculator" data-wp-context='{
+<div <?php echo wp_kses_post( get_block_wrapper_attributes() ); ?> data-wp-interactive="create-block/emi-calculator" data-wp-context='{
 	"calculations": {
 		"principalAmount": 100000,
 		"rateOfInterest": 5,
@@ -19,23 +19,23 @@
 	}
 }'>
 	<div class="panel">
-		<p>Home Loan EMI Calculator</p>
+		<p><?php esc_html_e( 'Home Loan EMI Calculator', 'gb-blocks' ); ?></p>
 		<div class="form-group">
-			<label for="principalAmount">Principal Amount: <span id="principalAmountValue">100000</span></label>
+			<label for="principalAmount"><?php esc_html_e( 'Principal Amount:', 'gb-blocks' ); ?> <span id="principalAmountValue">100000</span></label>
 			<br>
 			<input type="range" id="principalAmount" min="100000" max="20000000" step="100000" value="100000"
 				data-wp-on--input="actions.principalAmount">
 		</div>
 
 		<div class="form-group">
-			<label for="rateOfInterest">Rate of Interest (%): <span id="rateOfInterestValue">5</span></label>
+			<label for="rateOfInterest"><?php esc_html_e( 'Rate of Interest (%):', 'gb-blocks' ); ?> <span id="rateOfInterestValue">5</span></label>
 			<br>
 			<input type="range" id="rateOfInterest" min="1" max="15" step="0.1" value="5"
 				data-wp-on--input="actions.rateOfInterest">
 		</div>
 
 		<div class="form-group">
-			<label for="durationInYears">Duration in Years: <span id="durationInYearsValue">1</span></label>
+			<label for="durationInYears"><?php esc_html_e( 'Duration in Years:', 'gb-blocks' ); ?> <span id="durationInYearsValue">1</span></label>
 			<br>
 			<input type="range" id="durationInYears" min="1" max="30" step="1" value="1"
 				data-wp-on--input="actions.DurationInYears">
@@ -44,36 +44,21 @@
 
 	<div class="panel">
 		<div class="normal-group">
-			<div class="ingredients">Monthly EMI :
+			<div class="ingredients"><?php esc_html_e( 'Monthly EMI:', 'gb-blocks' ); ?>
 				<span data-wp-text="context.ingredients.emiPerMonth"></span>
 			</div>
 		</div>
 
 		<div class="normal-group">
-			<div class="ingredients">Interest Amount :
+			<div class="ingredients"><?php esc_html_e( 'Interest Amount:', 'gb-blocks' ); ?>
 				<span data-wp-text="context.ingredients.totalInterest"></span>
 			</div>
 		</div>
 
 		<div class="primary-group">
-			<div class="ingredients">Total Amount Payable :
+			<div class="ingredients"><?php esc_html_e( 'Total Amount Payable:', 'gb-blocks' ); ?>
 				<span data-wp-text="context.ingredients.totalAmountPayable"></span>
 			</div>
 		</div>
 	</div>
 </div>
-
-<script>
-	document.addEventListener('DOMContentLoaded', () => {
-		const sliders = document.querySelectorAll('input[type="range"]');
-
-		sliders.forEach(slider => {
-			const valueDisplay = document.getElementById(`${slider.id}Value`);
-
-			// Update the display when the slider is moved
-			slider.addEventListener('input', () => {
-				valueDisplay.textContent = slider.value;
-			});
-		});
-	});
-</script>

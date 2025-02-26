@@ -1,4 +1,4 @@
-var __webpack_exports__ = {};
+/******/ (() => { // webpackBootstrap
 /*!***********************************!*\
   !*** ./src/stock-display/view.js ***!
   \***********************************/
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         tableContainer.style.display = 'none';
 
         // Fetch JSON from src directory
-        const response = await fetch(stockTrackerData.jsonUrl);
+        const response = await fetch(gbBlocksStockTrackerData.jsonUrl);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -71,5 +71,6 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(fetchStocks, 5000);
   });
 });
-
+/******/ })()
+;
 //# sourceMappingURL=view.js.map

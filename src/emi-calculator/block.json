@@ -11,7 +11,7 @@
 	"supports": {
 		"interactivity": true
 	},
-	"textdomain": "emi-calculator",
+	"textdomain": "gb-blocks",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

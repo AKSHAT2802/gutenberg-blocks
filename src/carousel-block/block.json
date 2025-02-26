@@ -1,46 +1,47 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 2,
-  "name": "create-block/carousel-block",
-  "title": "Carousel Block",
-  "description": "A customizable carousel with images, big text, and small text.",
-  "category": "media",
-  "icon": "images-alt",
-  "supports": {
-      "html": false
-  },
-  "attributes": {
-      "slides": {
-          "type": "array",
-          "default": []
-      },
-      "autoplay": {
-          "type": "boolean",
-          "default": false
-      },
-      "autoplaySpeed": {
-          "type": "number",
-          "default": 3000
-      },
-      "pauseOnHover": {
-          "type": "boolean",
-          "default": false
-      },
-      "infiniteLoop": {
-          "type": "boolean",
-          "default": false
-      },
-      "showArrows": {
-          "type": "boolean",
-          "default": true
-      },
-      "showDots": {
-          "type": "boolean",
-          "default": true
-      }
-  },
-  "editorScript": "file:./index.js",
-  "editorStyle": "file:./editor.css",
-  "style": "file:./index.css",
-  "script": "file:./carousel.js"
-}
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "create-block/carousel-block",
+    "title": "Carousel Block",
+    "description": "A customizable carousel with images, big text, and small text.",
+    "category": "media",
+    "icon": "images-alt",
+    "supports": {
+        "html": false
+    },
+    "textdomain": "gb-blocks",
+    "attributes": {
+        "slides": {
+            "type": "array",
+            "default": []
+        },
+        "autoplay": {
+            "type": "boolean",
+            "default": false
+        },
+        "autoplaySpeed": {
+            "type": "number",
+            "default": 3000
+        },
+        "pauseOnHover": {
+            "type": "boolean",
+            "default": false
+        },
+        "infiniteLoop": {
+            "type": "boolean",
+            "default": false
+        },
+        "showArrows": {
+            "type": "boolean",
+            "default": true
+        },
+        "showDots": {
+            "type": "boolean",
+            "default": true
+        }
+    },
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./index.css",
+    "viewScript": "file:./carousel.js"
+  }

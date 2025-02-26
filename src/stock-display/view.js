@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 tableContainer.style.display = 'none';
 
                 // Fetch JSON from src directory
-                const response = await fetch(stockTrackerData.jsonUrl);
+                const response = await fetch(gbBlocksStockTrackerData.jsonUrl);
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
