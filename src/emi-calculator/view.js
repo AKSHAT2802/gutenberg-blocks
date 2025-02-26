@@ -5,7 +5,7 @@ import { store, getContext } from '@wordpress/interactivity';
 
 // Calculate the EMI and related values
 function calculateEMI( context ) {
-	const { calculations, ingredients } = context;
+	const { calculations, amounts } = context;
 
 	// Ensure we have valid numbers
 	const principalAmount =
@@ -30,14 +30,14 @@ function calculateEMI( context ) {
 		const totalInterest = totalAmountPayable - principalAmount;
 
 		// Update context with rounded values
-		ingredients.emiPerMonth = Math.round( emiPerMonth * 100 ) / 100;
-		ingredients.totalInterest = Math.round( totalInterest * 100 ) / 100;
-		ingredients.totalAmountPayable =
+		amounts.emiPerMonth = Math.round( emiPerMonth * 100 ) / 100;
+		amounts.totalInterest = Math.round( totalInterest * 100 ) / 100;
+		amounts.totalAmountPayable =
 			Math.round( totalAmountPayable * 100 ) / 100;
 	} catch ( error ) {
-		ingredients.emiPerMonth = 0;
-		ingredients.totalInterest = 0;
-		ingredients.totalAmountPayable = 0;
+		amounts.emiPerMonth = 0;
+		amounts.totalInterest = 0;
+		amounts.totalAmountPayable = 0;
 	}
 }
 

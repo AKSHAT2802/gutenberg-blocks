@@ -12,7 +12,7 @@
 		"rateOfInterest": 5,
 		"DurationInYears": 0
 	},
-	"ingredients": {
+	"amounts": {
 		"emiPerMonth": 0,
 		"totalInterest": 0,
 		"totalAmountPayable": 0
@@ -44,20 +44,20 @@
 
 	<div class="panel">
 		<div class="normal-group">
-			<div class="ingredients"><?php esc_html_e( 'Monthly EMI:', 'gb-blocks' ); ?>
-				<span data-wp-text="context.ingredients.emiPerMonth"></span>
+			<div class="amounts"><?php esc_html_e( 'Monthly EMI:', 'gb-blocks' ); ?>
+				<span data-wp-text="context.amounts.emiPerMonth"></span>
 			</div>
 		</div>
 
 		<div class="normal-group">
-			<div class="ingredients"><?php esc_html_e( 'Interest Amount:', 'gb-blocks' ); ?>
-				<span data-wp-text="context.ingredients.totalInterest"></span>
+			<div class="amounts"><?php esc_html_e( 'Interest Amount:', 'gb-blocks' ); ?>
+				<span data-wp-text="context.amounts.totalInterest"></span>
 			</div>
 		</div>
 
 		<div class="primary-group">
-			<div class="ingredients"><?php esc_html_e( 'Total Amount Payable:', 'gb-blocks' ); ?>
-				<span data-wp-text="context.ingredients.totalAmountPayable"></span>
+			<div class="amounts"><?php esc_html_e( 'Total Amount Payable:', 'gb-blocks' ); ?>
+				<span data-wp-text="context.amounts.totalAmountPayable"></span>
 			</div>
 		</div>
 	</div>
