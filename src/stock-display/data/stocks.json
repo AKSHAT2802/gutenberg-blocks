@@ -45,6 +45,22 @@
         "chg": 25.25,
         "chg_percent": 0.87,
         "ad_ratio": 1.13
+      },
+      {
+        "id": 7,
+        "name": "ICICI Bank",
+        "ltp": 1666.75,
+        "chg": 15.25,
+        "chg_percent": 0.87,
+        "ad_ratio": 0.93
+      },
+      {
+        "id": 8,
+        "name": "Coal India",
+        "ltp": 566.75,
+        "chg": 8.25,
+        "chg_percent": 1.87,
+        "ad_ratio": 0.93
       }
     ],
     "low": [
@@ -53,6 +69,22 @@
         "name": "Infosys",
         "ltp": 1356.75,
         "chg": -15.25,
+        "chg_percent": -0.87,
+        "ad_ratio": 0.93
+      },
+      {
+        "id": 9,
+        "name": "HUL",
+        "ltp": 2366.75,
+        "chg": -18.25,
+        "chg_percent": -0.87,
+        "ad_ratio": 0.93
+      },
+      {
+        "id": 10,
+        "name": "Bajaj Finance",
+        "ltp": 3566.75,
+        "chg": -25.25,
         "chg_percent": -0.87,
         "ad_ratio": 0.93
       }

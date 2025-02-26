@@ -25,12 +25,24 @@ document.addEventListener('DOMContentLoaded', function () {
         loadingDiv.style.display = 'block';
         tableContainer.style.display = 'none';
 
-        // Fetch JSON from src directory
-        const response = await fetch(gbBlocksStockTrackerData.jsonUrl);
+        // Add cache-busting parameter to prevent browser caching
+        const url = new URL(gbBlocksStockTrackerData.jsonUrl);
+        url.searchParams.append('_', new Date().getTime());
+
+        // Fetch JSON with cache-busting
+        const response = await fetch(url.toString(), {
+          method: 'GET',
+          cache: 'no-store' // Force fresh data
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
+        console.log('Stock data loaded:', data); // Debug logging
+
+        if (!data || !data[activeTab]) {
+          throw new Error(`No data available for tab: ${activeTab}`);
+        }
         renderStocks(data[activeTab] || []);
         loadingDiv.style.display = 'none';
         tableContainer.style.display = 'block';
@@ -42,14 +54,14 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderStocks(stocks) {
       const tbody = tableContainer.querySelector('tbody');
       tbody.innerHTML = stocks.map(stock => {
-        // Generare a random number between -10 to +10
+        // Generate a random number between -10 to +10
         const randomChange = Math.random() * 2 - 1;
         const ltp = stock.ltp + randomChange * stock.ltp * 0.1;
         const chg = stock.chg + randomChange * stock.chg * 0.1;
         const chgPercent = stock.chg_percent + randomChange * stock.chg_percent * 0.1;
         const adRatio = stock.ad_ratio + randomChange * stock.ad_ratio * 0.1;
         return `
-                             <tr>
+                        <tr>
                             <td class="stock-name">${stock.name}</td>
                             <td class="stock-ltp">${!isNaN(ltp) ? ltp.toFixed(2) : 'N/A'}</td>
                             <td class="stock-chg ${chg >= 0 ? 'positive' : 'negative'}">
@@ -59,15 +71,15 @@ document.addEventListener('DOMContentLoaded', function () {
                                 ${chgPercent >= 0 ? '+' : ''}${!isNaN(chgPercent) ? chgPercent.toFixed(2) : 'N/A'}%
                             </td>
                             <td class="stock-ratio">${!isNaN(adRatio) ? adRatio.toFixed(2) : 'N/A'}</td>
-                            </tr>
-                             `;
+                        </tr>
+                    `;
       }).join('');
     }
 
     // Initial fetch
     fetchStocks();
 
-    // Refresh every minute
+    // Refresh every 5 seconds
     setInterval(fetchStocks, 5000);
   });
 });

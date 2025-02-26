@@ -47,12 +47,15 @@ function gb_blocks_register_blocks() {
 		true
 	);
 
-	// Localize stock tracker data.
+	$json_file_path = plugin_dir_path( __FILE__ ) . 'src/stock-display/data/stocks.json';
+	$json_version = file_exists( $json_file_path ) ? filemtime( $json_file_path ) : '1.0.0';
+
+	// Localize stock tracker data with version parameter to prevent caching
 	wp_localize_script(
 		'gb-blocks-stock-tracker-view',
 		'gbBlocksStockTrackerData',
 		array(
-			'jsonUrl' => plugins_url( 'src/stock-display/data/stocks.json', __FILE__ ),
+			'jsonUrl' => plugins_url( 'src/stock-display/data/stocks.json', __FILE__ ) . '?ver=' . $json_version,
 		)
 	);
 }
