@@ -208,26 +208,43 @@ function save({
   attributes
 }) {
   const {
-    slides
+    slides,
+    autoplay,
+    autoplaySpeed,
+    pauseOnHover,
+    infiniteLoop,
+    showArrows,
+    showDots
   } = attributes;
+
+  // Build data attributes to pass settings to frontend JS
+  const dataAttributes = {
+    'data-autoplay': autoplay ? 'true' : 'false',
+    'data-autoplay-speed': autoplaySpeed,
+    'data-pause-on-hover': pauseOnHover ? 'true' : 'false',
+    'data-infinite-loop': infiniteLoop ? 'true' : 'false',
+    'data-show-arrows': showArrows ? 'true' : 'false',
+    'data-show-dots': showDots ? 'true' : 'false'
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(),
-    className: "carousel"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "carousel",
+    ...dataAttributes
+  }, showArrows && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "carousel-prev"
-  }, "<"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, "<"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "carousel-next"
+  }, ">")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "carousel-track"
   }, slides.map((slide, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "carousel-slide",
     key: index
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: slide.imageUrl,
-    alt: `Slide ${index + 1}`
+    alt: slide.bigText || `Slide ${index + 1}`
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "carousel-overlay"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, slide.bigText), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, slide.smallText))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: "carousel-next"
-  }, ">"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, slide.bigText && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, slide.bigText), slide.smallText && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, slide.smallText))))), showDots && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "carousel-dots"
   }, slides.map((_, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     key: index,
